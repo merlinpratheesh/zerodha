@@ -9,8 +9,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import {ChatService} from './chat.service';
+import { webSocket } from 'rxjs/webSocket';
 import { environment } from '../environments/environment'
+import { UserdataService } from './service/userdata.service';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { environment } from '../environments/environment'
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
   ],
+  providers:[UserdataService,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
