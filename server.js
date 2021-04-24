@@ -86,47 +86,56 @@ if (!access_token) {
 }
 
 instruments = ["NSE:NIFTY 50"];
-kc.getLTP(instruments).then(function (response) {
-	var myDoc = {
-		Instruments: {
-			NIFTY: response["NSE:NIFTY 50"].last_price,
+
+var myVar = setInterval(myFunction, 10000);
+
+function myFunction() {
+	kc.getLTP(instruments).then(function (response) {
+		if(response === undefined){
+			//exit;
 		}
-	};
-	//res.json(myDoc);
-	var x = response["NSE:NIFTY 50"].last_price;
-	var y = 50;
-	var z = x % y;
-	console.log(myDoc, x - z);
-
-
-	var text1 = "NFO:NIFTY21506";
-	var text2 = new String(x - z);
-	var text3 = "CE";
-	var text4 = text1.concat(text2, text3);
-	console.log(text4);
-
-	var text5 = "NFO:NIFTY21506";
-	var text6 = new String(x - z);
-	var text7 = "PE";
-	var text8 = text5.concat(text6, text7);
-	console.log(text8);
-
+		var myDoc = {
+			Instruments: {
+				NIFTY: response["NSE:NIFTY 50"].last_price,
+			}
+		};
+		//res.json(myDoc);
+		var x = response["NSE:NIFTY 50"].last_price;
+		var y = 50;
+		var z = x % y;
+		console.log(myDoc, x - z);
 	
-
-	kc.getLTP(new Array(text4, text8)).then(function (response) {
-		console.log(response);
-
-		console.log(response[text4].last_price);
-		console.log(response[text8].last_price);
-
-
-
-	});
 	
+		var text1 = "NFO:NIFTY21506";
+		var text2 = new String(x - z);
+		var text3 = "CE";
+		var text4 = text1.concat(text2, text3);
+		console.log(text4);
+	
+		var text5 = "NFO:NIFTY21506";
+		var text6 = new String(x - z);
+		var text7 = "PE";
+		var text8 = text5.concat(text6, text7);
+		console.log(text8);
+	
+		
+	
+		kc.getLTP(new Array(text4, text8)).then(function (response) {
+			console.log(response);
+	
+			console.log(response[text4].last_price);
+			console.log(response[text8].last_price);
+	
+	
+	
+		});
+		
+	
+	}).catch(function (err) {
+		console.log(err);
+	})
+}
 
-}).catch(function (err) {
-	console.log(err);
-})
 
 
 
