@@ -1,11 +1,11 @@
 import WebSocket from 'ws';
 import http from 'http';
 
-const server =http.createServer(req,res);
+const server =http.createServer();
 const wss= new WebSocket.Server({server});
 
-wss.on('connection',function connection(ws: WebSocket){
-    ws.on('message', function incoming(msg:WebSocket.Data){
+wss.on('connection',function connection(ws){
+    ws.on('message', function incoming(msg){
         console.log(msg);
     });
     ws.send('connected');

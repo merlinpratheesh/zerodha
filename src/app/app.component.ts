@@ -12,7 +12,7 @@ export class AppComponent {
 
 title="client";
 message='hello';
-subject=webSocket('wss://ws.kite.trade?api_key=909lcbtyglf6ks4o&access_token=5C8jpQYxi4qm1h8pZUMgyTlsJqPYpPPh');
+subject=webSocket('ws://localhost:8889');
 
 sendToServer($event){
 	this.subject.subscribe();

@@ -1,6 +1,7 @@
 {
   "name": "zerodha",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +30,7 @@
     "firebase": "^7.0 || ^8.0",
     "ngx-sharebuttons": "^8.0.5",
     "rxjs": "~6.6.0",
+    "rxjs-websockets": "^8.0.1",
     "tslib": "^2.0.0",
     "wa": "^0.1.3",
     "websocket": "^1.0.33",
