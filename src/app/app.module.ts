@@ -9,12 +9,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import {ChatService} from './chat.service';
 import { webSocket } from 'rxjs/webSocket';
 import { environment } from '../environments/environment'
 import { UserdataService } from './service/userdata.service';
-
-
+import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +20,7 @@ import { UserdataService } from './service/userdata.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppSharedModule,
@@ -30,7 +29,7 @@ import { UserdataService } from './service/userdata.service';
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
   ],
-  providers:[UserdataService,ChatService],
+  providers:[UserdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,31 +1,26 @@
 import { Component } from '@angular/core';
 import { UserdataService } from './service/userdata.service';
-import { ChatService } from './chat.service';
-
+import {webSocket} from 'rxjs/webSocket'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [ UserdataService, ChatService ]
+  providers: [ UserdataService ]
 
 })
 export class AppComponent {
 
-	constructor(private chatService: ChatService) {
-		chatService.messages.subscribe(msg => {			
-      console.log("Response from websocket: " + msg);
-		});
-	}
+title="client";
+message='hello';
+subject=webSocket('wss://ws.kite.trade?api_key=909lcbtyglf6ks4o&access_token=5C8jpQYxi4qm1h8pZUMgyTlsJqPYpPPh');
 
-  private message = {
-		author: 'tutorialedge',
-		message: 'this is a test message'
-	}
+sendToServer($event){
+	this.subject.subscribe();
+	this.subject.next(this.message);
+	this.subject.complete();
+}
 
-  sendMsg() {
-		console.log('new message from client to websocket: ', this.message);
-		this.chatService.messages.next(this.message);
-		this.message.message = '';
-	}
+
+
 
 }
