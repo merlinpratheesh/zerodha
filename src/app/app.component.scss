@@ -1,0 +1,24 @@
+
+
+ .outlook {
+    height: 80px;
+    width: 120px;
+  }
+
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+
+  
+     .div {
+      flex: 50%;
+    }
+  }
+
+  .temp {
+    background: oldlace;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
