@@ -1,9 +1,12 @@
-<mat-card  fxLayout="column" fxLayoutAlign="space-around center" style=" width:220px; height:150px; ">
-  <div fxLayout="row" style="padding: 15px; margin-left: 5px;" > 
+<mat-card  fxLayout="column" fxLayoutAlign="space-around center" style=" width:220px; height:150px;background-color: #05ffb0;">
+  <div>Merlin</div>
+
+  <div fxLayout="row" style=" margin-left: 5px;" > 
   <div fxLayout="column" >
     <img
       src="https://lh3.googleusercontent.com/a-/AOh14GjNt4hNEB71uqRWBO1t0wf2JdxZjQTA51f9lSTtqA=s96-c"
       alt="profile image" width="100" height="100">
+
 
     <div fxLayout="row">
       <div>
@@ -14,7 +17,6 @@
       </div>
 
     </div>
-    <mat-card-header>Merlin</mat-card-header>
 
   </div>
  
@@ -35,3 +37,6 @@
   </div>
 </div>
 </mat-card>
+<label for="file">File:</label>
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+<button (click)="uploadImage()">Upload Image</button>

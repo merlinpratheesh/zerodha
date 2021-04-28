@@ -10,6 +10,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+
 import { environment } from '../environments/environment'
 
 
@@ -23,7 +24,16 @@ import { environment } from '../environments/environment'
     AppRoutingModule,
     BrowserAnimationsModule,
     AppSharedModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBivW__mV76H4nn_b95CecBCPgQLYdEaAQ",
+      authDomain: "zerodha-a1fc5.firebaseapp.com",
+      projectId: "zerodha-a1fc5",
+      storageBucket: "zerodha-a1fc5.appspot.com",
+      messagingSenderId: "592965746249",
+      appId: "1:592965746249:web:2c4b9241280caa14d88998",
+      measurementId: "G-2K9S3M0SDM"
+
+    }),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
