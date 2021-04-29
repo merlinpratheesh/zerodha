@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import {AngularFireStorage} from '@angular/fire/storage'
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage'
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,17 +9,19 @@ import {AngularFireStorage} from '@angular/fire/storage'
 })
 export class AppComponent {
   title = 'zerodha';
-  
-  filePath:String
-  constructor(private afStorage: AngularFireStorage) { }
-  upload(event) {    
-    this.filePath = event.target.files[0]
-  }
-  uploadImage(){
-    console.log(this.filePath)
-    this.afStorage.upload('/images'+Math.random()+this.filePath, this.filePath);
+  profileUrl: any;
+  angularFireStorage: any;
+
+  constructor(private Storage: AngularFireStorage) { }
+  upload(event) {
+    const file = event.target.files[0];
+    const filePath = '/images' + Math.random();
+    const task = this.Storage.upload(filePath, file);
     
-      
+
+
+
+
   }
 }
 
