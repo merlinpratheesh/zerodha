@@ -1,45 +1,68 @@
-<mat-card  fxLayout="column" fxLayoutAlign="space-around center" style=" width:220px; height:150px;background-color: #c592cc;">
-  <div>Merlin</div>
-
-  <div fxLayout="row" style=" margin-left: 5px;" > 
-  <div fxLayout="column" >
-    <img
-    [src]="profileUrl | async"
-      alt="profile image" width="100" height="100">
+<mat-card fxLayout="column" fxLayoutAlign="space-around center"
+  style=" width:220px; height:180px;background-color:palegreen;">
+  <div fxLayout="row" style=" margin-left: 15px;">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      <img [src]="profileUrl | async" alt="profile image" width="100" height="100">
 
 
-    <div fxLayout="row">
-      <div>
-        <a href="#" target="_blank"><span class="mdi mdi-instagram"></span></a>
-        <a href="#" target="_blank"><span class="mdi mdi-telegram"></span></a>
-        <a href="#" target="_blank"><span class="mdi mdi-twitter"></span></a>
-        <a href="#" target="_blank"><span class="mdi mdi-gmail"></span></a>
+      <div fxLayout="row">
+        <div>
+
+          <a href="#" target="_blank"><span class="mdi mdi-instagram"></span></a>
+          <a href="#" target="_blank"><span class="mdi mdi-telegram"></span></a>
+          <a href="#" target="_blank"><span class="mdi mdi-twitter"></span></a>
+          <a href="#" target="_blank"><span class="mdi mdi-gmail"></span></a>
+        </div>
+
       </div>
 
+      <div>MerlinPrathees R</div>
+
+    </div>
+
+    <div fxLayout="column">
+      <form [formGroup]="dateForm" *ngIf="this.dateRef |async as projectDetails;">
+        <mat-form-field style="width: 110px;">
+          <input matInput placeholder=  "{{projectDetails.DOB.toDate() | date:'dd-MM-yyyy'}}" [matDatepicker]="birthdatePicker" (click)="datePicker.open()" readonly
+            formControlName="DOB" >
+          <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #birthdatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="width: 110px;">
+          <input matInput placeholder="{{projectDetails.Anniv.toDate() | date:'dd-MM-yyyy'}}" [matDatepicker]="anniversarydatePicker" (click)="datePicker.open()"
+            readonly formControlName="Anniv"  >
+          <mat-datepicker-toggle matSuffix [for]="anniversarydatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #anniversarydatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field style="width: 110px;">
+          <input matInput placeholder= "{{projectDetails.DOD.toDate() | date:'dd-MM-yyyy'}}" [matDatepicker]="datePicker" (click)="datePicker.open()" readonly
+            formControlName="DOD" >
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+      </form>
+
     </div>
 
   </div>
- 
-  <div fxLayout="column" > 
-
-    <div>
-      <span>DOB:12/04/1991</span>
-      <span class="mdi mdi-account" title="name" style="color: #ff5722;"></span>
-    </div>
-    <div>
-      <span>anniv:12/04/1991</span>
-      <span class="mdi mdi-map-marker" title="location" style="color: #ffc107;"></span>
-    </div>
-    <div>
-      <span>DOD:12/04/1991</span>
-      <span class="mdi mdi-badge-account" title="education" style="color:#967fcc;"></span>
-    </div>
-  </div>
-</div>
 </mat-card>
+<button class="btn btn-primary" (click)=update() type="submit">Submit</button> 
+
 <label for="file">File:</label>
 
 
 <input type="file" (change)="uploadFile($event)" />
 <div>{{ uploadPercent | async }}</div>
 <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+
+
+
+
+{{this.dateRef |async |json}}
+
+<div *ngIf="this.dateRef |async as projectDetails;">
+  <div>
+    {{projectDetails.DOB.toDate() | date:'dd-MM-yyyy'}}
+  </div>
+</div>
+  
